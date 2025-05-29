@@ -1,0 +1,23 @@
+{
+	"compilerOptions": {
+		"composite": true,
+		"target": "ESNext",
+		"module": "commonjs",
+		"rootDir": "./src/",
+		"outDir": "./dist/",
+		"strict": true,
+		"moduleResolution": "node",
+		"sourceMap": true,
+		"esModuleInterop": true,
+		"removeComments": true,
+		"resolveJsonModule": true,
+		"noImplicitAny": true, 
+	},
+	"include": [
+		"src/**/*"
+, "browser"	],
+	"exclude": [
+		"node_modules",
+		"dist"
+	]
+}

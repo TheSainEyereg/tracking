@@ -1,0 +1,29 @@
+{
+  "name": "tracking",
+  "type": "commonjs",
+  "scripts": {
+    "build": "tsc",
+    "dev": "nodemon ./src/app.ts",
+    "dev:debug": "nodemon --inspect ./src/app.ts",
+    "cli": "ts-node ./src/cli.ts",
+    "start": "node ./dist/app"
+  },
+  "dependencies": {
+    "@fastify/cors": "^11.0.0",
+    "@fastify/type-provider-typebox": "^5.1.0",
+    "@sinclair/typebox": "^0.34.28",
+    "dotenv": "^16.4.7",
+    "fastify": "^5.2.1",
+    "fastify-plugin": "^5.0.1",
+    "javascript-obfuscator": "^4.1.1",
+    "mongoose": "^8.12.1"
+  },
+  "devDependencies": {
+    "@fastify/cookie": "^11.0.2",
+    "@types/node": "^22.13.9",
+    "nodemon": "^3.1.9",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.0.0"
+  },
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+}
