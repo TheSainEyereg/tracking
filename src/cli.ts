@@ -4,7 +4,7 @@ import { createInterface } from "node:readline";
 
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import { randomString } from "./utils/crypto.util";
+import { randomHexString } from "./utils/crypto.util";
 
 import App from "./models/App.model";
 
@@ -37,8 +37,8 @@ const apps = async (mode: string, name?: string) => {
 			const exists = await App.findOne({ name });
 			assert(!exists, "App already exists");
 
-			const clientId = randomString(32);
-			const clientSecret = randomString(64);
+			const clientId = randomHexString(64);
+			const clientSecret = randomHexString(128);
 			const ipsString = await ask("IPs (separated by space, leave empty for all): ");
 
 			const ips = ipsString ? ipsString.split(" ") : undefined;

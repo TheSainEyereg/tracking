@@ -5,11 +5,11 @@ dotenv.config();
 
 import mongoose from "mongoose";
 import Fastify from "fastify";
-import fastifyCors from "@fastify/cors";
 import { TypeBoxTypeProvider } from "@fastify/type-provider-typebox";
 import assert from "node:assert";
 
 import publicRouter from "./routers/public.router";
+import ipPlugin from "./plugins/ip.plugin";
 
 const { PORT, MONGODB_URL } = env;
 
@@ -21,10 +21,7 @@ async function build() {
 	await mongoose.connect(MONGODB_URL)
 		.then(() => console.log("Connected to MongoDB"));
 
-	await app.register(fastifyCors, {
-		origin: "http://127.0.0.1:5500",
-		credentials: true
-	});
+	app.register(ipPlugin);
 
 	await app.register(publicRouter, { prefix: "/p" });
 }

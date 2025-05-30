@@ -277,13 +277,16 @@ console.log("pxiChecksum", pxiChecksum);
 console.log("pxiFullBufferHash", pxiFullBufferHash);
 // console.log("getClientRects", getClientRects);
 
-const data = CryptoJS.AES.encrypt(JSON.stringify({
+const iv = CryptoJS.lib.WordArray.random(16);
+console.log(iv)
+
+const encrypted = CryptoJS.AES.encrypt(JSON.stringify({
 	glDebugRenderer,
 	canvas,
 	readPixels,
 	pxiChecksum,
 	pxiFullBufferHash,
 	// getClientRects
-}), KEY).toString();
+}), CryptoJS.enc.Hex.parse(KEY), { iv });
 
-fetch(POST_URL, { method: "POST", body: data });
+fetch(POST_URL, { method: "POST", body: `${CryptoJS.enc.Latin1.stringify(iv)}${CryptoJS.enc.Latin1.stringify(encrypted.ciphertext)}` });
